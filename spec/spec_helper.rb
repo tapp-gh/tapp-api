@@ -2,6 +2,18 @@ require 'simplecov'
 require 'simplecov-console'
 SimpleCov.start 'rails'
 
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::Console,
+])
+
+SimpleCov.minimum_coverage 100
+SimpleCov.start do
+  add_filter "/config/"
+  add_filter "/vendor/"
+  add_filter "/lib/mq/"
+end
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -13,13 +25,13 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-  if config.files_to_run.one?
-    config.default_formatter = "doc"
-  end
+  # if config.files_to_run.one?
+  #   config.default_formatter = "doc"
+  # end
 
-  config.profile_examples = 10
+  # config.profile_examples = 10
 
-  config.order = :random
+  # config.order = :random
 
-  Kernel.srand config.seed
+  # Kernel.srand config.seed
 end
