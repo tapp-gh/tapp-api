@@ -26,6 +26,5 @@ end
 group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
