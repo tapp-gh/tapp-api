@@ -3,11 +3,13 @@ require 'rails_helper'
 RSpec.describe 'AuthController', type: :request do
   describe 'POST /auth' do
     let(:user){FactoryBot.create(:user, email: 'tibbs@gmail.com', password: 'password')}
+    let(:token) {JsonWebToken.encode(1)}
+    
     it 'authenticates user' do
       post '/api/v1/auth', params: {email: user.email, password: 'password'}
       expect(response).to have_http_status(:created)
       expect(JSON.parse(response.body)).to eq({
-        "token" => "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDQ2OTM3NjN9.z6GBqfoRzOibwsfYiWFUtSfu9qrqgEHJRUYvZpI4Lv4"
+        "token" => token
       })
     end
 

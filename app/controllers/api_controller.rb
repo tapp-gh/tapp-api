@@ -11,9 +11,9 @@ class ApiController < ApplicationController
       end
 
   rescue JWT::DecodeError
-      render json: {error: ["Auth token has expired"]}, status: :unauthorized
-  rescue JWT::ExpiredSignature
       render json: {error: ["Invalid auth token"]}, status: :unauthorized
+  rescue JWT::ExpiredSignature
+      render json: {error: ["Auth token has expired"]}, status: :unauthorized
   end
 
 

@@ -5,7 +5,7 @@ class Api::V1::AuthController < ApiController
 
     def create
       if user&.authenticate(params.require(:password))
-        token = JsonWebTokenService.encode(user.id)
+        token = JsonWebToken.encode(user.id)
         render json: {token: token}, status: :created
       else
         head :unauthorized
