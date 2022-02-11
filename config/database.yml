@@ -62,10 +62,6 @@ development:
 test:
   <<: *default
   database: tapp_api_test
-  username: postgres
-  password: asdfghjkl
-  host: localhost
-  port: 5432
   
 
 # As with config/credentials.yml, you never want to store sensitive information,
