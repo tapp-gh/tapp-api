@@ -24,10 +24,6 @@ default: &default
 development:
   <<: *default
   database: tapp_api_development
-  username: postgres
-  password: asdfghjkl
-  host: localhost
-  port: 5432
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
