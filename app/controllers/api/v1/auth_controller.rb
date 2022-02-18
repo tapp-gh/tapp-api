@@ -9,16 +9,11 @@ class Api::V1::AuthController < ApiController
         token = JsonWebToken.encode(@user.id)
         render json: {user: UserRepresenter.new(@user).as_json, token: token}, status: :created
       else
-        head :unauthorized
+        head :unprocessable_entity
       end
     end
 
   private
-
-  # def user
-  #   @user ||= User.find_by(email: params.require(:email))
-  # end
-
 
   def parameter_missing(e)
     render json: {error: e.message}, status: :unprocessable_entity
