@@ -4,9 +4,10 @@ class Api::V1::AuthController < ApiController
   skip_before_action :authentication_token!
 
     def create
-      if user&.authenticate(params.require(:password))
-        token = JsonWebToken.encode(user.id)
-        render json: {token: token}, status: :created
+      @user = User.find_by_email(params[:email])
+      if @user&.authenticate(params[:password])
+        token = JsonWebToken.encode(@user.id)
+        render json: {user: UserRepresenter.new(@user).as_json, token: token}, status: :created
       else
         head :unauthorized
       end
@@ -14,9 +15,9 @@ class Api::V1::AuthController < ApiController
 
   private
 
-  def user
-    @user ||= User.find_by(email: params.require(:email))
-  end
+  # def user
+  #   @user ||= User.find_by(email: params.require(:email))
+  # end
 
 
   def parameter_missing(e)
