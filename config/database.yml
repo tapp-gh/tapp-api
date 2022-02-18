@@ -28,9 +28,13 @@ default: &default
 development:
   <<: *default
   database: tapp_api_development
-  username: <%= ENV['DBUSER'] %>
-  password: <%= ENV['DBPASS'] %>
-  host: <%= ENV['DBHOST'] %>
+  username: postgres
+  password: asdfghjkl
+  host: localhost
+  port: 5432
+  # username: <%= ENV['DBUSER'] %>
+  # password: <%= ENV['DBPASS'] %>
+  # host: <%= ENV['DBHOST'] %>
   
 
   # The specified database role being used to connect to postgres.

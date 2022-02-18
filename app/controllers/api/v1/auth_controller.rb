@@ -9,7 +9,7 @@ class Api::V1::AuthController < ApiController
         token = JsonWebToken.encode(@user.id)
         render json: {user: UserRepresenter.new(@user).as_json, token: token}, status: :created
       else
-        head :unprocessable_entity
+        head :unauthorized
       end
     end
 
