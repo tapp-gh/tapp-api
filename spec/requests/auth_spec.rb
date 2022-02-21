@@ -7,7 +7,7 @@ RSpec.describe 'AuthController', type: :request do
     it 'authenticates user' do
       post '/api/v1/auth', params: {email: user.email, password: user.password}
       token = JSON.parse(response.body)['token']
-      expect(response).to have_http_status(:created)
+      expect(response).to have_http_status(:ok)
       expect(JSON.parse(response.body)).to eq({
         'user' => {
           'date_of_birth' => user.date_of_birth,
