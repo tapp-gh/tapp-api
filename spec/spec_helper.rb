@@ -12,6 +12,13 @@ SimpleCov.start do
   add_filter "/config/"
   add_filter "/vendor/"
   add_filter "/lib/mq/"
+  add_filter "/app/mailers/"
+  add_filter "/app/jobs/"
+  add_filter "/app/channels/"
+  add_filter "/app/controllers/api/v1/auth_controller.rb"
+  add_filter "/app/controllers/api_controller.rb"
+  add_filter "/app/controllers/application_controller.rb"
+  add_filter "/app/models/json_web_token.rb"
 end
 
 RSpec.configure do |config|

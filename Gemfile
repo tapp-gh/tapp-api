@@ -17,6 +17,8 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rspec'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
 end
 
 group :test do
@@ -31,7 +33,6 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 gem 'jwt'
