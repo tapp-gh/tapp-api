@@ -4,8 +4,8 @@ class Api::V1::AuthController < ApiController
   skip_before_action :authentication_token!
 
     def create
-      @user = User.find_by_email(params[:email])
-      if @user&.authenticate(params[:password])
+      @user = User.find_by_email(user_params['email'])
+      if @user&.authenticate(user_params['password'])
         token = JsonWebToken.encode(@user.id)
         render json: {user: UserRepresenter.new(@user).as_json, token: token}, status: :ok
       else
@@ -17,5 +17,9 @@ class Api::V1::AuthController < ApiController
 
   def parameter_missing(e)
     render json: {error: e.message}, status: :unprocessable_entity
+  end
+
+  def user_params
+    params.require(:auth).permit(:email, :password)
   end
 end

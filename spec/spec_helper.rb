@@ -12,6 +12,9 @@ SimpleCov.start do
   add_filter "/config/"
   add_filter "/vendor/"
   add_filter "/lib/mq/"
+  add_filter "/app/channels/"
+  add_filter "/app/mailers/"
+  add_filter "/app/jobs/"
 end
 
 RSpec.configure do |config|
