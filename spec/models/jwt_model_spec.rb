@@ -1,7 +1,7 @@
 
 require 'rails_helper'
 
-describe JsonWebToken do
+RSpec.describe JsonWebToken do
   let!(:token) {described_class.encode(1)}
   let!(:decoded){described_class.decode(token)}
   describe ".decode" do

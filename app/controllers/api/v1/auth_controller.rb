@@ -7,6 +7,7 @@ class Api::V1::AuthController < ApiController
       @user = User.find_by_email(user_params['email'])
       if @user&.authenticate(user_params['password'])
         token = JsonWebToken.encode(@user.id)
+        response.set_header('Authorization: Bearer', token)
         render json: {user: UserRepresenter.new(@user).as_json, token: token}, status: :ok
       else
         head :unauthorized

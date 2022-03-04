@@ -7,7 +7,7 @@ class ApiController < ApplicationController
   def authentication_token!
       payload = JsonWebToken.decode(auth_token)
       if payload.present?
-          @current_user = User.find(payload["sub"])
+          User.find(payload["user_id"])
       end
 
   rescue JWT::DecodeError
