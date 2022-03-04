@@ -48,4 +48,3 @@ RSpec.describe ApiController, type: :controller do
     end
 end
 
-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
