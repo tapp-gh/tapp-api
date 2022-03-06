@@ -21,7 +21,7 @@ RSpec.describe 'AuthController', type: :request do
     it 'returns an error when email is missing' do
       post '/api/v1/auth', params: {password: user.password} 
       expect(JSON.parse(response.body)).to eq({
-        "error" => "param is missing or the value is empty: auth"
+        "error" => "param is missing or the value is empty: email"
       })
       expect(response).to have_http_status(:unprocessable_entity)
     end
@@ -30,7 +30,7 @@ RSpec.describe 'AuthController', type: :request do
       post '/api/v1/auth', params: {email: user.email}
       expect(response).to have_http_status(:unprocessable_entity)
       expect(JSON.parse(response.body)).to eq({
-        "error" => "param is missing or the value is empty: auth"
+        "error" => "param is missing or the value is empty: password"
       })
     end
 
