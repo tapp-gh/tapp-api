@@ -1,7 +1,6 @@
 
-class Api::V1::AuthController < ApiController
+class Api::V1::AuthController < ApplicationController
   rescue_from ActionController::ParameterMissing, with: :parameter_missing
-  skip_before_action :authentication_token!
 
     def create
       @user = User.find_by_email(user_params['email'])
