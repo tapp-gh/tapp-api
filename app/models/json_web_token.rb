@@ -3,7 +3,6 @@ class JsonWebToken
   ALGORITHM_TYPE = 'HS256'
 
   def self.encode(user_id)
-    # , exp: 24.hours.from_now.to_i
       payload = {user_id: user_id}
       payload[:exp] = 24.hours.from_now.to_i
       JWT.encode payload, SECRET_KEY, ALGORITHM_TYPE
@@ -15,3 +14,4 @@ class JsonWebToken
   end
 
 end
+

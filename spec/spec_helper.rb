@@ -12,6 +12,9 @@ SimpleCov.start do
   add_filter "/config/"
   add_filter "/vendor/"
   add_filter "/lib/mq/"
+  add_filter "/app/channels/"
+  add_filter "/app/mailers/"
+  add_filter "/app/jobs/"
 end
 
 RSpec.configure do |config|
@@ -24,6 +27,7 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+  
 
   # if config.files_to_run.one?
   #   config.default_formatter = "doc"
@@ -31,7 +35,7 @@ RSpec.configure do |config|
 
   # config.profile_examples = 10
 
-  # config.order = :random
+  # config.order = "random"
 
   # Kernel.srand config.seed
 end
