@@ -1,12 +1,13 @@
 
-class Api::V1::AuthController < ApiController
+class Api::V1::AuthController < ApplicationController
   rescue_from ActionController::ParameterMissing, with: :parameter_missing
-  skip_before_action :authentication_token!
 
     def create
-      if user&.authenticate(params.require(:password))
-        token = JsonWebToken.encode(user.id)
-        render json: {token: token}, status: :created
+      @user = User.find_by_email(user_params['email'])
+      if @user&.authenticate(user_params['password'])
+        token = JsonWebToken.encode(@user.id)
+        response.set_header('Authorization: Bearer', token)
+        render json: {user: UserRepresenter.new(@user).as_json, token: token}, status: :ok
       else
         head :unauthorized
       end
@@ -14,12 +15,11 @@ class Api::V1::AuthController < ApiController
 
   private
 
-  def user
-    @user ||= User.find_by(email: params.require(:email))
-  end
-
-
   def parameter_missing(e)
     render json: {error: e.message}, status: :unprocessable_entity
+  end
+
+  def user_params
+    params.require(:auth).permit(:email, :password)
   end
 end

@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :user do
-    email { Faker::Internet.email(name: name) }
-    name { Faker::Name.name }
-    date_of_birth { Faker::Date.birthday(min_age: 18) }
+    email { "tapp@gmail.com" }
+    name { "Tapp Api" }
+    date_of_birth { "18/02/2022" }
+    password {"password"}
     is_active { true }
   end
 end
