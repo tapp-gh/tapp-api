@@ -14,8 +14,8 @@ RSpec.describe User, type: :model do
 
   describe "#active" do
     it "should return active users in alphabetical order" do
-      user1 = create(:user, first_name: "named", last_name: "user")
-      user2 = create(:user, first_name: "admin", last_name: "one")
+      user1 = create(:user, name: "named")
+      user2 = create(:user, name: "admin")
       expect(User.active).to eq([user2, user1])
     end
 
