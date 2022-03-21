@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_03_01_195507) do
+=======
+ActiveRecord::Schema.define(version: 2022_02_22_155002) do
+>>>>>>> a115ad3 (dockerfile creation for api)
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "adminpack"
