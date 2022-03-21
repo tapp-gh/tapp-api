@@ -17,8 +17,4 @@ test:
 production:
   adapter: postgresql
   database: tapp_api_production
-  # username: tapp_api
-  # password: <%= ENV['TAPP_API_DATABASE_PASSWORD'] %>
-  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  # timeout: 5000
 
