@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   database: tapp_api_development
-  host: <%= ENV.fetch("DB_HOST") { "postgres_host" } %>
+  host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
   user: <%= ENV.fetch("DB_USER") { "admin" } %>
   password: <%= ENV.fetch("DB_PASSWORD") { "admin" } %>
   pool: 5
@@ -10,7 +10,7 @@ development:
 test:
   adapter: postgresql
   database: tapp_api_test
-  host: <%= ENV.fetch("DB_HOST") { "postgres_host" } %>
+  host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
   user: <%= ENV.fetch("DB_USER") { "admin" } %>
   password: <%= ENV.fetch("DB_PASSWORD") { "admin" } %>
   pool: 5
