@@ -2,7 +2,8 @@ development:
   adapter: postgresql
   database: tapp_api_development
   host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
-  user: postgres
+  user: <%= ENV.fetch("DB_USER") { "postgres" } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { "" }%>
   pool: 5
   timeout: 5000
 
@@ -10,11 +11,11 @@ test:
   adapter: postgresql
   database: tapp_api_test
   host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
-  username: postgres
+  user: <%= ENV.fetch("DB_USER") { "postgres" } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { "" }%>
   pool: 5
   timeout: 5000
 
 production:
   adapter: postgresql
   database: tapp_api_production
-

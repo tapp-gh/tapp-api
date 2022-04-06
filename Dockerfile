@@ -1,7 +1,7 @@
 
 FROM ruby:2.7.5-alpine
 
-RUN apk add --update build-base git nodejs npm postgresql-client postgresql-dev shared-mime-info sqlite-dev tzdata
+RUN apk add --update build-base git nodejs npm postgresql-client postgresql-dev shared-mime-info  tzdata
 
 RUN gem install bundler:2.1.4
 
