@@ -8,7 +8,7 @@ class MockController
     token = UserService.new(user).generate_token
     headers = token
     mock_request = Struct.new(:headers)
-    self.request = mock_request.new({'Authorization': "Bearer #{headers}"})
+    self.request = mock_request.new({'Authorization': headers })
   end
 end
 
@@ -21,15 +21,13 @@ describe Authenticable do
     
     let(:authentication){MockController.new(@user)}
     it 'should get user from authorization token' do
-      token = authentication.request.headers['Authorization'].split(' ')[1]
-      token = JsonWebToken.encode(user_id: @user.id)
+      authentication.request.headers['Authorization'] = JsonWebToken.encode(user_id: @user.id)
       expect(authentication.current_user.id).not_to be_nil
       expect(authentication.current_user.id).to eq(@user.id)
     end
 
     it 'should not get user from empty authorization token' do
-      token = authentication.request.headers['Authorization'].split(' ')[1]
-      token = nil
+      authentication.request.headers['Authorization'] = nil
       expect(authentication.current_user).to be_nil
     end
   end
