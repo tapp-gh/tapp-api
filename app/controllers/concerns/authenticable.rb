@@ -5,7 +5,8 @@ module Authenticable
 		header = request.headers['Authorization']
 		return nil if header.nil?
 
-		decoded = JsonWebToken.decode(header)
+		token = header.split(' ')[1]
+		decoded = JsonWebToken.decode(token)
 		@current_user = User.find(decoded["user_id"]) 
 	end
 
