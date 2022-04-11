@@ -8,7 +8,7 @@ class MockController
     token = UserService.new(user).generate_token
     headers = token
     mock_request = Struct.new(:headers)
-    self.request = mock_request.new({'Authorization': headers})
+    self.request = mock_request.new({'Authorization': headers })
   end
 end
 
