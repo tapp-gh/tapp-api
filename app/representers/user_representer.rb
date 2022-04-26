@@ -9,8 +9,7 @@ class UserRepresenter
       email: user.email,
       name: user.name,
       date_of_birth: user.date_of_birth
-    }
-    
+    } 
   end
 
   private
